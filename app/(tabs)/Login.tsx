@@ -31,9 +31,9 @@ export default function HomeScreen() {
         body: formData,
       });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error?.message || "Login failed");
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+          throw new Error('Login failed')
       }
     },
     onSuccess() {
@@ -54,7 +54,7 @@ export default function HomeScreen() {
           <Text style={styles.label}>Username</Text>
           <TextInput
             style={styles.input}
-            placeholder="Choose a username"
+            placeholder="Username"
             placeholderTextColor="#888"
             value={username}
             onChangeText={setUsername}
@@ -63,7 +63,7 @@ export default function HomeScreen() {
           <Text style={styles.label}>Password</Text>
           <TextInput
             style={styles.input}
-            placeholder="Create a password (min. 8 characters)"
+            placeholder="Password (min. 8 characters)"
             placeholderTextColor="#888"
             secureTextEntry
             value={password}

@@ -48,6 +48,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="CreateMatch"
+        options={{
+          title: 'Create a Match',
+          //tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="Logout"
         options={{
           title: 'Logout',

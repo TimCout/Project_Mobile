@@ -15,7 +15,8 @@ import {
   
     const logout = useMutation({
       mutationFn: async () => {
-        const res = await fetch("http://localhost:3000/api/users/logout/", {
+        const res = await fetch("http://localhost:3000/api/users/logout", {
+          credentials: 'include',
           method: "POST",
         });
         if (!res.ok) throw new Error("Logout failed");

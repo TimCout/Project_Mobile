@@ -23,7 +23,7 @@ import {
       },
       onSuccess() {
         queryClient.invalidateQueries();
-        navigation.navigate("Login");
+        navigation.navigate("index");
       },
       onError(error) {
         Alert.alert("Erreur", error.message || "Logout échoué");

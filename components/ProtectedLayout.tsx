@@ -11,7 +11,7 @@ export default function ProtectedLayout({ children }: { children: ReactNode }) {
     return (
       <View style={styles.centered}>
         <Text style={styles.message}>You're not authorized to access this page.</Text>
-        <Pressable style={styles.button} onPress={() => router.push("/Login")}>
+        <Pressable style={styles.button} onPress={() => router.push("/")}>
           <Text style={styles.buttonText}>Sign In</Text>
         </Pressable>
       </View>

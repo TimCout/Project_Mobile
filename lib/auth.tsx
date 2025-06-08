@@ -4,16 +4,16 @@ export function useAuth() {
   const client = useQueryClient();
   const user = useQuery({
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/api/auth/user");
+      const res = await fetch("http://localhost:3000/api/users/login", { credentials: 'include'});
       const data = await res.json();
-      return data as { email: string; name: string };
+      return data as { username: string };
     },
     queryKey: ["getUser"],
   });
 
   const login = useMutation({
     mutationFn: async () => {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch("http://localhost:3000/api/auth/login", { credentials: 'include',
         method: "POST",
       });
     },
@@ -31,12 +31,12 @@ export function useAuth() {
   return { user: user?.data, login: login.mutate, logout: logout.mutate };
 }
 
-/function Components() {
-  const { user, logout } = useAuth();
-  return (
-    <View>
-      <Text>Hello {user?.name}</Text>
-      <Button onPress={() => logout()} title="Log out" />
-    </View>
-  );
-}/
+// //function Components() {
+//   const { user, logout } = useAuth();
+//   return (
+//     <View>
+//       <Text>Hello {user?.name}</Text>
+//       <Button onPress={() => logout()} title="Log out" />
+//     </View>
+//   );
+// }/

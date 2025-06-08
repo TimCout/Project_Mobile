@@ -1,30 +1,32 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
+import { useState } from "react";
 
 export default function NumberOfPlayersInput({
-  registered,
-  needed,
-  setRegistered,
-  setNeeded,
+  count,
+  onCountChange,
+  total,
+  onTotalChange,
 }: {
-  registered: string;
-  needed: string;
-  setRegistered: (val: string) => void;
-  setNeeded: (val: string) => void;
+  count: string;
+  onCountChange: (newVal: string) => void;
+  total: string;
+  onTotalChange: (newVal: string) => void;
 }) {
+
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
-        value={registered}
-        onChangeText={setRegistered}
-        placeholder="Registered"
+        placeholder="Registered Players"
+        value={count}
+        onChangeText={onCountChange}
         keyboardType="numeric"
         style={styles.input}
       />
-      <Text style={styles.subText}>over</Text>
+      <Text style={styles.over}>over</Text>
       <TextInput
-        value={needed}
-        onChangeText={setNeeded}
-        placeholder="Needed"
+        placeholder="Needed Players"
+        value={total}
+        onChangeText={onTotalChange}
         keyboardType="numeric"
         style={styles.input}
       />
@@ -33,22 +35,21 @@ export default function NumberOfPlayersInput({
 }
 
 const styles = StyleSheet.create({
-  label: {
-    color: "#0ea5e9",
-    fontWeight: "500",
+  container: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
     marginVertical: 8,
   },
   input: {
-    borderColor: "#ccc",
     borderWidth: 1,
+    borderColor: "#ccc",
     borderRadius: 8,
-    padding: 12,
-    marginBottom: 8,
-    color: "#0ea5e9",
+    padding: 8,
+    width: 100,
+    color: "black",
   },
-  subText: {
-    color: "#0ea5e9",
-    textAlign: "center",
-    marginBottom: 8,
+  over: {
+    color: "#38bdf8",
   },
 });

@@ -17,6 +17,7 @@ import PlaceInput from "@/components/PlaceInput";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import BlueButton from "@/components/BlueButton";
 import ProtectedLayout from "@/components/ProtectedLayout";
+import LocationManager from "@/components/localisation";
 
 export default function CreateMatchScreen() {
   const navigation = useNavigation();
@@ -78,6 +79,8 @@ export default function CreateMatchScreen() {
             {addMatch.isPending ? "Creating match..." : "Create match"}
           </BlueButton>
         </WhiteBox2>
+
+        <LocationManager></LocationManager>
 
         <Pressable onPress={() => navigation.navigate("Football")}>
           <Text style={styles.link}>Home - About Page</Text>
